@@ -3,7 +3,7 @@
 ## 📘 專案簡介
 
 本專案展示如何使用 **Amazon Bedrock** 的平台功能，建構一個文件問答應用系統。  
-使用者可查詢「鍵盤產品使用說明書」中的功能、設定方式與注意事項，系統將自 Knowledge Base 擷取資訊並以 Claude 3 Haiku模型生成回答。
+使用者可查詢「鍵盤產品使用說明書」中的功能、設定方式與注意事項，系統將自 Knowledge Base 擷取資訊並以 **Claude 3 Haiku**模型生成回答。
 
 ---
 
@@ -48,7 +48,7 @@
 
 ### 2. 文件上傳至 S3
 
-- 建立 Bucket：`bedrock-kb-demo-bucket`
+- 建立 Bucket：`my-keyboard-docs`
 - 上傳鍵盤產品使用說明書（`g915_x_lightspeed_qsg_amr.pdf`, `IRK59M 中英說明書 電子版 20211214.pdf`）
 
 **📸 bucket建立畫面**
@@ -64,14 +64,18 @@
     - 來源：S3 中的文件
     - Chunking：Semantic
     - Embedding：Cohere Multilingual V3
-    - 向量儲存：OpenSearch Serverless（使用免費額度）
+    - 向量儲存：OpenSearch Serverless
 
 **📸 Knowledge Base 設定細節畫面**
 ![Knowledge Base 設定細節](./screenshots/kb-details.png)
 <br>
-```
-為了建立Knowledge Base，過程中遇到一些Permission上的錯誤，如OpenSearch Serverless相關、IAM，熟悉IAM user/user-group的建立，並得知了有分root/role的機制，也一併解決，開啟的permissions如下圖。
-```
+
+---
+
+為了建立Knowledge Base，過程中遇到一些Permission上的錯誤，如OpenSearch Serverless相關、IAM <br>
+➔ 熟悉IAM user/user-group的建立，並得知了有分root/role的機制，也一併解決，開啟的permissions如下圖。
+
+---
 
 ![IAM-setting](./screenshots/IAM-setting.png)
 <br>
